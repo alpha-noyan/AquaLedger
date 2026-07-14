@@ -5,7 +5,7 @@ const GlobalContext = createContext({});
 export const GlobalContextProvider = ({children}) => {
     const [account, setAccount] = useState({
         name: 'Khattak Traders',
-        balance: 1000
+        balance: 1001
     })
     
     return (
