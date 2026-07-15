@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, TextInput, Alert, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 import { getDatabase } from '../../database';
 import { colors, spacing, borderRadius } from '../../styles/colors';

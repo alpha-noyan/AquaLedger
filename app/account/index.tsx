@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Modal, TextInput,
 import { useState, useEffect } from 'react';
 import { getDatabase } from '../../database';
 import { colors, spacing, borderRadius, typography } from '../../styles/colors';
+import { useGlobalContext } from '../globalContext';
 
 export default function AccountScreen() {
-  const [plantName, setPlantName] = useState('Aqua Water Plant');
-  const [balance, setBalance] = useState(0);
+  const { balance, setBalance, plantName, setPlantName } = useGlobalContext();
   const [transactions, setTransactions] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState('cashin'); // cashin or cashout
@@ -28,6 +28,7 @@ export default function AccountScreen() {
     try {
       const settings = await db.getFirstAsync('SELECT * FROM plant_settings LIMIT 1');
       if (settings) {
+        // console.log(settings);
         setPlantName(settings.plant_name);
         setBalance(settings.balance);
       }
@@ -287,7 +288,7 @@ export default function AccountScreen() {
         {/* Balance Section */}
         <View style={styles.balanceSection}>
           <Text style={styles.balanceLabel}>Current Balance</Text>
-          <Text style={styles.balanceAmount}>PKR {balance.toLocaleString()}</Text>
+          <Text style={styles.balanceAmount}>PKR {balance}</Text>
           <View style={styles.balanceActions}>
             <TouchableOpacity 
               style={[styles.balanceButton, styles.cashInButton]}

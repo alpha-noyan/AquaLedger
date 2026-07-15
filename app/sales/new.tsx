@@ -257,7 +257,7 @@ export default function NewSaleScreen() {
             data={readyItems}
             renderItem={renderItem}
             keyExtractor={item => item.id.toString()}
-            scrollEnabled={false}
+            scrollEnabled={true}
             style={styles.itemList}
           />
           

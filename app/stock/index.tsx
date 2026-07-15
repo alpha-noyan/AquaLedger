@@ -22,14 +22,14 @@ export default function StockScreen() {
       route: '/stock/ready-items',
       color: colors.success,
     },
-    {
-      id: 'production',
-      title: 'Production',
-      icon: '🏭',
-      description: 'Manage production orders',
-      route: '/stock/production',
-      color: colors.warning,
-    },
+    // {
+    //   id: 'production',
+    //   title: 'Production',
+    //   icon: '🏭',
+    //   description: 'Manage production orders',
+    //   route: '/stock/production',
+    //   color: colors.warning,
+    // },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function StockScreen() {
       </View>
 
       {/* Quick Stats */}
-      <View style={styles.statsSection}>
+      {/* <View style={styles.statsSection}>
         <Text style={styles.statsTitle}>Quick Stats</Text>
         <View style={styles.statsGrid}>
           <View style={styles.statItem}>
@@ -75,7 +75,7 @@ export default function StockScreen() {
             <Text style={styles.statLabel}>Production Orders</Text>
           </View>
         </View>
-      </View>
+      </View> */}
     </ScrollView>
   );
 }

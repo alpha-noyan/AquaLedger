@@ -3,10 +3,11 @@ import { useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { getDatabase } from '../../database';
 import { colors, spacing, borderRadius } from '../../styles/colors';
+import { useGlobalContext } from '../globalContext';
 
 export default function SalesScreen() {
   const router = useRouter();
-  const [sales, setSales] = useState([]);
+  const {sales, setSales} = useGlobalContext();
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -157,7 +158,7 @@ export default function SalesScreen() {
         {item.payment_status !== 'paid' && (
           <TouchableOpacity 
             style={styles.collectButton}
-            onPress={() => router.push(`/sales/${item.id}/collect`)}
+            // onPress={() => router.push(`/sales/${item.id}/collect`)}
           >
             <Text style={styles.collectButtonText}>Collect Payment</Text>
           </TouchableOpacity>

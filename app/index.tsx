@@ -3,11 +3,11 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { getDatabase } from '../database/index';
 import { colors, spacing, borderRadius, typography } from '../styles/colors';
+import { useGlobalContext } from './globalContext';
 
 export default function Dashboard() {
   const router = useRouter();
-  const [balance, setBalance] = useState(0);
-  const [plantName, setPlantName] = useState('Aqua Water Plant');
+  const {balance,setBalance, plantName, setPlantName, sales} = useGlobalContext();
   const [stats, setStats] = useState({
     todaySales: 0,
     pendingOrders: 0,
@@ -17,15 +17,17 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadDashboardData();
-  }, []);
+  }, [sales]);
 
   const loadDashboardData = async () => {
-    const db = getDatabase();
+    
     
     try {
+      const db = await getDatabase();
       // Get plant settings
       const settings = await db.getFirstAsync('SELECT * FROM plant_settings LIMIT 1');
       if (settings) {
+        // console.log(settings);
         setBalance(settings.balance);
         setPlantName(settings.plant_name);
       }
@@ -108,7 +110,7 @@ export default function Dashboard() {
       {/* Balance Card */}
       <View style={styles.balanceCard}>
         <Text style={styles.balanceLabel}>Total Balance</Text>
-        <Text style={styles.balanceAmount}>PKR {balance.toLocaleString()}</Text>
+        <Text style={styles.balanceAmount}>PKR {balance}</Text>
       </View>
 
       {/* Quick Actions */}

@@ -6,6 +6,7 @@ import { colors } from '../styles/colors';
 import { useEffect, useState } from 'react';
 import { initDatabase } from '../database';
 import { ActivityIndicator, View, Text } from 'react-native';
+import { GlobalProvider } from './globalContext';
 
 export default function RootLayout() {
   const [dbReady, setDbReady] = useState(false);
@@ -32,6 +33,7 @@ export default function RootLayout() {
   }
 
   return (
+    <GlobalProvider>
     <SafeAreaProvider>
       <StatusBar style="dark" backgroundColor={colors.aquaWhite} />
       <Tabs
@@ -65,35 +67,35 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="account/index"
+          name="account"
           options={{
             title: 'Account',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>👤</Text>,
           }}
         />
         <Tabs.Screen
-          name="stock/index"
+          name="stock"
           options={{
             title: 'Stock',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>📦</Text>,
           }}
         />
         <Tabs.Screen
-          name="sales/index"
+          name="sales"
           options={{
             title: 'Sales',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>💰</Text>,
           }}
         />
         <Tabs.Screen
-          name="orders/index"
+          name="orders"
           options={{
             title: 'Orders',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>📋</Text>,
           }}
         />
         <Tabs.Screen
-          name="more/index"
+          name="more"
           options={{
             title: 'More',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 22 }}>⚙️</Text>,
@@ -101,5 +103,6 @@ export default function RootLayout() {
         />
       </Tabs>
     </SafeAreaProvider>
+    </GlobalProvider>
   );
 }

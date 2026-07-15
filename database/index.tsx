@@ -326,56 +326,55 @@ const seedInitialData = async () => {
   // Check if sample raw items exist
   const rawItems = await db.getAllAsync('SELECT * FROM raw_items LIMIT 1');
   
-  if (rawItems.length === 0) {
-    const sampleRaw = [
-      ['Bottle Caps', 'pieces', 1000, 500, 2],
-      ['Labels', 'pieces', 500, 200, 1],
-      ['1L Plastic Bottles', 'pieces', 800, 300, 5],
-      ['1.5L Plastic Bottles', 'pieces', 600, 200, 7],
-      ['Packaging Boxes', 'pieces', 200, 50, 10]
-    ];
+  // if (rawItems.length === 0) {
+  //   const sampleRaw = [
+  //     ['Bottle Caps', 'pieces', 1000, 500, 2],
+  //     ['Labels', 'pieces', 500, 200, 1],
+  //     ['1L Plastic Bottles', 'pieces', 800, 300, 5],
+  //     ['1.5L Plastic Bottles', 'pieces', 600, 200, 7],
+  //     ['Packaging Boxes', 'pieces', 200, 50, 10]
+  //   ];
 
-    for (const item of sampleRaw) {
-      await db.runAsync(
-        'INSERT INTO raw_items (name, unit, stock_quantity, min_stock, purchase_price) VALUES (?, ?, ?, ?, ?)',
-        item
-      );
-    }
-  }
+  //   for (const item of sampleRaw) {
+  //     await db.runAsync(
+  //       'INSERT INTO raw_items (name, unit, stock_quantity, min_stock, purchase_price) VALUES (?, ?, ?, ?, ?)',
+  //       item
+  //     );
+  //   }
+  // }
 
   // Check if sample ready items exist
   const readyItems = await db.getAllAsync('SELECT * FROM ready_items LIMIT 1');
   
-  if (readyItems.length === 0) {
-    const sampleReady = [
-      ['1L Water Bottle', 20, 100, 30, 8],
-      ['1.5L Water Bottle', 30, 80, 25, 12],
-      ['500ml Water Bottle', 15, 150, 50, 6]
-    ];
+  // if (readyItems.length === 0) {
+  //   const sampleReady = [
+  //     ['1L Water Bottle', 20, 100, 30, 8],
+  //     ['1.5L Water Bottle', 30, 80, 25, 12],
+  //     ['500ml Water Bottle', 15, 150, 50, 6]
+  //   ];
 
-    for (const item of sampleReady) {
-      await db.runAsync(
-        'INSERT INTO ready_items (name, selling_price, stock_quantity, min_stock, production_cost) VALUES (?, ?, ?, ?, ?)',
-        item
-      );
-    }
-  }
+  //   for (const item of sampleReady) {
+  //     await db.runAsync(
+  //       'INSERT INTO ready_items (name, selling_price, stock_quantity, min_stock, production_cost) VALUES (?, ?, ?, ?, ?)',
+  //       item
+  //     );
+  //   }
+  // }
 
   // Check if sample employees exist
   const employees = await db.getAllAsync('SELECT * FROM employees LIMIT 1');
   
-  if (employees.length === 0) {
-    const sampleEmployees = [
-      ['Ahmed Khan', '0300-1234567', 'Loralai', 'Manager', 50000, 1],
-      ['Usman Ali', '0300-7654321', 'Loralai', 'Driver', 25000, 1],
-      ['Sara Bibi', '0300-9876543', 'Loralai', 'Sales Person', 20000, 1]
-    ];
+  // if (employees.length === 0) {
+  //   const sampleEmployees = [
+  //     ['Ahmed Khan', '0300-1234567', 'Loralai', 'Manager', 50000, 1],
+  //     ['Usman Ali', '0300-7654321', 'Loralai', 'Driver', 25000, 1]
+  //   ];
 
-    for (const emp of sampleEmployees) {
-      await db.runAsync(
-        'INSERT INTO employees (name, phone, address, position, salary, is_active) VALUES (?, ?, ?, ?, ?, ?)',
-        emp
-      );
-    }
-  }
+  //   for (const emp of sampleEmployees) {
+  //     await db.runAsync(
+  //       'INSERT INTO employees (name, phone, address, position, salary, is_active) VALUES (?, ?, ?, ?, ?, ?)',
+  //       emp
+  //     );
+  //   }
+  // }
 };
